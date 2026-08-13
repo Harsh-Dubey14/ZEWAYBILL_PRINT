@@ -1,0 +1,17 @@
+unmanaged implementation in class zbp_i_eway_bill_print unique;
+strict ( 2 );
+
+define behavior for ZI_EWAY_BILL_PRINT alias EwayBill
+lock master
+authorization master ( global )
+{
+  field ( readonly )
+  CompanyCode,
+  FiscalYear,
+  DocumentNumber,
+  DocumentType,
+  EInvoiceNumber;
+
+  action PrintEwayBill
+    result [1] ZA_EWAY_BILL_PDF_RESULT;
+}

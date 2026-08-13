@@ -1,0 +1,4 @@
+@EndUserText.label: 'SERVICE DEFINITION FOR EWAY BILL PRINT'
+define service ZSD_EWAYBILL_PRINT {
+  expose ZC_EWAY_BILL_PRINT;
+}

@@ -1,0 +1,369 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+  typeName: 'E-Invoice',
+  typeNamePlural: 'E-Invoices',
+
+  title: {
+    type: #STANDARD,
+    value: 'DocumentNumber'
+  },
+
+  description: {
+    type: #STANDARD,
+    value: 'EInvoiceNumber'
+  },
+
+  typeImageUrl: 'sap-icon://e-care'
+}
+
+annotate entity ZC_EWAY_BILL_PRINT with
+{
+  /*
+   * Object Page Facets
+   */
+  @UI.facet: [
+    {
+      id: 'EInvoiceDetails',
+      purpose: #STANDARD,
+      type: #COLLECTION,
+      label: 'E-Invoice Details',
+      position: 10
+    },
+    {
+      id: 'GeneralInformation',
+      parentId: 'EInvoiceDetails',
+      purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'General Information',
+      position: 10
+    }
+  ]
+
+
+  /*
+   * Company Code
+   */
+  @EndUserText.label: 'Company Code'
+  @UI.lineItem: [
+    { position: 10, importance: #HIGH }
+  ]
+  @UI.selectionField: [
+    { position: 10 }
+  ]
+  @UI.identification: [
+    { position: 10 }
+  ]
+ 
+  CompanyCode;
+
+
+  /*
+   * Fiscal Year
+   */
+  @EndUserText.label: 'Fiscal Year'
+  @UI.lineItem: [
+    { position: 20, importance: #HIGH }
+  ]
+  @UI.selectionField: [
+    { position: 20 }
+  ]
+  @UI.identification: [
+    { position: 20 }
+  ]
+//< >
+  FiscalYear;
+
+
+  /*
+   * Document Number
+   */
+  @EndUserText.label: 'Document Number'
+  @UI.lineItem: [
+    { position: 30, importance: #HIGH },{ type: #FOR_ACTION , dataAction: 'PrintEwayBill', label: 'Generate Print'}
+  ]
+  @UI.selectionField: [
+    { position: 30 }
+  ]
+  @UI.identification: [
+    { position: 30 }
+  ]
+ 
+  DocumentNumber;
+
+
+  /*
+   * Document Type
+   */
+  @EndUserText.label: 'Document Type'
+  @UI.lineItem: [
+    { position: 40, importance: #HIGH }
+  ]
+  @UI.selectionField: [
+    { position: 40 }
+  ]
+  @UI.identification: [
+    { position: 40 }
+  ]
+  DocumentType;
+
+
+  /*
+   * E-Invoice Number
+   */
+  @EndUserText.label: 'E-Invoice Number'
+  @UI.lineItem: [
+    { position: 50, importance: #HIGH }
+  ]
+  @UI.selectionField: [
+    { position: 50 }
+  ]
+  @UI.identification: [
+    { position: 50 }
+  ]
+  EInvoiceNumber;
+
+
+  /*
+   * GSTIN
+   */
+  @EndUserText.label: 'GSTIN'
+  @UI.lineItem: [
+    { position: 60, importance: #HIGH }
+  ]
+  @UI.selectionField: [
+    { position: 60 }
+  ]
+  @UI.identification: [
+    { position: 60 }
+  ]
+  GSTIN;
+
+
+  /*
+   * Plant
+   */
+  @EndUserText.label: 'Plant'
+  @UI.lineItem: [
+    { position: 70, importance: #HIGH }
+  ]
+  @UI.selectionField: [
+    { position: 70 }
+  ]
+  @UI.identification: [
+    { position: 70 }
+  ]
+  Plant;
+
+
+  /*
+   * Invoice Reference Number
+   */
+  @EndUserText.label: 'Invoice Reference Number'
+  @UI.lineItem: [
+    { position: 80, importance: #HIGH }
+  ]
+  @UI.selectionField: [
+    { position: 80 }
+  ]
+  @UI.identification: [
+    { position: 80 }
+  ]
+  IRN;
+
+
+  /*
+   * Generated Date
+   */
+  @EndUserText.label: 'Generated Date'
+  @UI.lineItem: [
+    { position: 90, importance: #HIGH }
+  ]
+  @UI.selectionField: [
+    { position: 90 }
+  ]
+  @UI.identification: [
+    { position: 90 }
+  ]
+  GeneratedDate;
+
+
+  /*
+   * Billing Date
+   */
+  @EndUserText.label: 'Billing Date'
+  @UI.lineItem: [
+    { position: 100, importance: #HIGH }
+  ]
+  @UI.selectionField: [
+    { position: 100 }
+  ]
+  @UI.identification: [
+    { position: 100 }
+  ]
+  BillingDate;
+
+
+  /*
+   * Billing Time
+   */
+  @EndUserText.label: 'Billing Time'
+  @UI.lineItem: [
+    { position: 110, importance: #MEDIUM }
+  ]
+  @UI.identification: [
+    { position: 110 }
+  ]
+  BillingTime;
+
+
+  /*
+   * Status
+   */
+  @EndUserText.label: 'Status'
+  @UI.lineItem: [
+    {
+      position: 120,
+      importance: #HIGH,
+      criticality: 'Criticality'
+    }
+  ]
+  @UI.selectionField: [
+    { position: 110 }
+  ]
+  @UI.identification: [
+    {
+      position: 120,
+      criticality: 'Criticality'
+    }
+  ]
+  Status;
+
+
+  /*
+   * IRN Status
+   */
+  @EndUserText.label: 'IRN Status'
+  @UI.lineItem: [
+    {
+      position: 130,
+      importance: #HIGH,
+      criticality: 'Criticality'
+    }
+  ]
+  @UI.selectionField: [
+    { position: 120 }
+  ]
+  @UI.identification: [
+    {
+      position: 130,
+      criticality: 'Criticality'
+    }
+  ]
+  IRNStatus;
+
+
+  /*
+   * Criticality
+   */
+  @EndUserText.label: 'Criticality'
+  @UI.hidden: true
+  Criticality;
+
+
+  /*
+   * Cancellation Date
+   */
+  @EndUserText.label: 'Cancellation Date'
+  @UI.lineItem: [
+    { position: 140, importance: #MEDIUM }
+  ]
+  @UI.selectionField: [
+    { position: 130 }
+  ]
+  @UI.identification: [
+    { position: 140 }
+  ]
+  CancellationDate;
+
+
+  /*
+   * Cancellation Time
+   */
+  @EndUserText.label: 'Cancellation Time'
+  @UI.lineItem: [
+    { position: 150, importance: #MEDIUM }
+  ]
+  @UI.identification: [
+    { position: 150 }
+  ]
+  CancellationTime;
+
+
+  /*
+   * Created By
+   */
+  @EndUserText.label: 'Created By'
+  @UI.lineItem: [
+    { position: 160, importance: #LOW }
+  ]
+  @UI.selectionField: [
+    { position: 140 }
+  ]
+  @UI.identification: [
+    { position: 160 }
+  ]
+  CreatedBy;
+
+
+  /*
+   * Created Date
+   */
+  @EndUserText.label: 'Created Date'
+  @UI.lineItem: [
+    { position: 170, importance: #LOW }
+  ]
+  @UI.identification: [
+    { position: 170 }
+  ]
+  CreatedDate;
+
+
+  /*
+   * Created Time
+   */
+  @EndUserText.label: 'Created Time'
+  @UI.lineItem: [
+    { position: 180, importance: #LOW }
+  ]
+  @UI.identification: [
+    { position: 180 }
+  ]
+  CreatedTime;
+
+
+  /*
+   * Last Changed By
+   */
+  @EndUserText.label: 'Last Changed By'
+  @UI.lineItem: [
+    { position: 190, importance: #LOW }
+  ]
+  @UI.identification: [
+    { position: 190 }
+  ]
+  LastChangedBy;
+
+
+  /*
+   * Last Changed Date
+   */
+  @EndUserText.label: 'Last Changed Date'
+  @UI.lineItem: [
+    { position: 200, importance: #LOW }
+  ]
+  @UI.identification: [
+    { position: 200 }
+  ]
+  LastChangedDate;
+}

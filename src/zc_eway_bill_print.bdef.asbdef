@@ -1,0 +1,8 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_EWAY_BILL_PRINT alias EwayBill
+{
+
+  use action PrintEwayBill;
+}
